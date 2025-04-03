@@ -1,3 +1,5 @@
+import sys
+
 from stats import get_count_characters, get_num_words, sorted_list
 
 
@@ -7,9 +9,7 @@ def get_book_text(path):
     return file_contents
 
 
-def generate_report():
-    path = "books/frankenstein.txt"
-
+def generate_report(path):
     file_content = get_book_text(path)
     num_words = get_num_words(file_content)
     char_count = get_count_characters(file_content)
@@ -33,9 +33,16 @@ def generate_report():
     return ret
 
 
-def main():
+def usage():
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
 
-    report = generate_report()
+
+def main():
+    if len(sys.argv) != 2:
+        usage()
+    path = sys.argv[1]
+    report = generate_report(path)
     print(report)
 
 
