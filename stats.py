@@ -10,3 +10,16 @@ def get_count_characters(string):
         else:
             ret[c.lower()] = 1
     return ret
+
+
+def sorted_list(chars):
+    sorted_list = []
+    for item, amount in chars.items():
+        char = {"name": item, "amount": amount}
+        sorted_list.append(char)
+    sorted_list.sort(reverse=True, key=sort_by_amount)
+    return sorted_list
+
+
+def sort_by_amount(dict):
+    return dict["amount"]
